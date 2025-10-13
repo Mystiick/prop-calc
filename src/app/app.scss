@@ -1,0 +1,95 @@
+@import '../colors';
+
+.sheet {
+    margin: 2rem auto;
+    font-family: system-ui, sans-serif;
+    max-width: 800px;
+}
+
+section {
+    border-radius: 1rem;
+    border: 2px solid $light-accent;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: $light-shades;
+}
+
+.inputs label {
+    display: block;
+    margin: 0.5rem 0;
+}
+
+.inputs input[type=checkbox] {
+    width: 1rem;
+    margin: 0;
+}
+
+.inputs input {
+    margin-left: 5%;
+    width: 90%;
+}
+
+.inputs textarea {
+    margin-left: 5%;
+    width: 90%;
+}
+
+.results div {
+    margin: 0.25rem 0;
+}
+
+input[readonly] {
+    background-color: #45454545;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0
+}
+
+button {
+    background: $light-accent;
+    color: $light-shades;
+    border: none;
+    padding: 0.5rem 0.9rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+li button {
+    background: $dark-accent;
+    font-size: 0.8rem;
+    padding: 0.35rem 0.65rem;
+}
+
+li input {
+    margin: 0 5%;
+    width: 100%;
+}
+
+h2.align-right {
+    position: relative;
+}
+
+h2.align-right button {
+    position: absolute;
+    right: 0;
+}
+
+hr {
+    color: $dark-shade;
+}
