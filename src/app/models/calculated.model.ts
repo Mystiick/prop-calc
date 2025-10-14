@@ -1,4 +1,4 @@
-import {Property} from "../property.model";
+import {Property} from './property.model';
 
 export class Calculated {
     public downPayment: number = 0;
@@ -26,7 +26,7 @@ export class Calculated {
 
     public repairs: number = 0;
     public monthlyLocAdded: number = 0;
-    public totalMonthlyProfit: number =0;
+    public totalMonthlyProfit: number = 0;
     public deprecationTotalMonthlyProfit: number = 0;
 
     constructor(property: Property) {
@@ -74,7 +74,7 @@ export class Calculated {
 
         this.monthlyLocAdded = (this.downPayment * (property.income.lineOfCredit / 100)) / 12;
         this.totalMonthlyProfit = this.agentMonthlyProfit - this.monthlyLocAdded;
-        this.deprecationTotalMonthlyProfit = -property.loan.offerPrice / 12 /27.5 * 0.3 + this.totalMonthlyProfit;
+        this.deprecationTotalMonthlyProfit = -property.loan.offerPrice / 12 / 27.5 * 0.3 + this.totalMonthlyProfit;
     }
 
     private calculateMonthlyMort(property: Property): number {

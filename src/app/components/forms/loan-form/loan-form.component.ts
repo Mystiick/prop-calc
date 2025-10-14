@@ -1,15 +1,24 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Loan } from '../../../models/property.model';
+import {
+    Component,
+    EventEmitter,
+    Input,
+    Output
+} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {
+    Calculated,
+    Loan
+} from '../../../models';
 
 @Component({
     selector: 'app-loan-form',
     standalone: true,
     imports: [FormsModule],
     templateUrl: './loan-form.component.html',
-    styleUrls: ['./loan-form.component.scss']
+    styleUrls: ['../form.scss']
 })
 export class LoanFormComponent {
-    @Input({ required: true }) loan!: Loan;
+    @Input({required: true}) loan!: Loan;
+    @Input({required: true}) calc!: Calculated;
     @Output() changed = new EventEmitter<void>();
 }

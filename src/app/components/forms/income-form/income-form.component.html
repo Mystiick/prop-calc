@@ -1,43 +1,38 @@
-<h2>Expenses</h2>
+<h2 class="align-right">
+    Monthly Income
+    <button (click)="addIncome()">Add</button>
+</h2>
 
 <form (change)="changed.emit()">
+    <ul>
+        @for (item of income.rentals; track $index) {
+            <li>
+                <input type="number"
+                       [name]="'rental'+$index"
+                       [(ngModel)]="income.rentals[$index]"/>
+                <button (click)="removeIncome($index)" tabindex="-1">Delete</button>
+            </li>
+        }
+    </ul>
+    <input readonly="readonly"
+           [value]="calc.totalIncome"
+           name="totalIncome"/>
+    <hr/>
     <label>
-        List Price
-        <input type="number" [(ngModel)]="loan.listPrice" name="listPrice"/>
+        Agent Cut (%)
+        <input type="number"
+               [(ngModel)]="income.agentCutPct"
+               name="agentCutPct"/></label>
+    <label>
+        Line of Credit (%)
+        <input type="number"
+               [(ngModel)]="income.lineOfCredit"
+               name="lineOfCredit"/>
     </label>
-
     <label>
-        Offer Price
-        <input type="number" [(ngModel)]="loan.offerPrice" name="offerPrice"/>
-    </label>
-
-    <label>
-        Down Payment (%)
-        <input type="number" [(ngModel)]="loan.downPct" name="downPct"/>
-    </label>
-
-    <label>
-        Extra Down
-        <input type="number" [(ngModel)]="loan.extraDown" name="extraDown"/>
-    </label>
-
-    <label>
-        Interest Rate
-        <input type="number" [(ngModel)]="loan.interestRate" name="interestRate"/>
-    </label>
-
-    <label>
-        Months
-        <input type="number" [(ngModel)]="loan.months" name="months"/>
-    </label>
-
-    <label>
-        Extra Payments
-        <input type="number" [(ngModel)]="loan.extraPayments" name="extraPayments"/>
-    </label>
-
-    <label>
-        Yearly Taxes
-        <input type="number" [(ngModel)]="loan.yearlyTaxes" name="yearlyTaxes"/>
+        Monthly Repair (%)
+        <input type="number"
+               [(ngModel)]="income.repairPct"
+               name="repairPct"/>
     </label>
 </form>
