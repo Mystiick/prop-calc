@@ -1,0 +1,24 @@
+<h2 class="align-right">
+    Monthly Expenses
+    <button (click)="addExpense()">Add</button>
+</h2>
+
+<form (change)="changed.emit()" (keydown.enter)="$event.preventDefault(); changed.emit()">
+    <ul>
+        @for (item of expenses; track $index) {
+            <li>
+                <input type="text"
+                       [name]="'expenseName'+$index"
+                       [(ngModel)]="expenses[$index].name"/>
+
+                <input type="number"
+                       [name]="'expenseValue'+$index"
+                       [(ngModel)]="expenses[$index].value"/>
+                <button (click)="removeExpense($index)" tabindex="-1">Delete</button>
+            </li>
+        }
+    </ul>
+    <input readonly="readonly"
+           [value]="calc.expenses"
+           name="expenses"/>
+</form>

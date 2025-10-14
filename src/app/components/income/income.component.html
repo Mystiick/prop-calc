@@ -1,20 +1,46 @@
 <h3>Income</h3>
-<ul>
+<ul class="summary">
     <li>
-        Agent Cut:
-        <strong>{{ calc.monthlyAgentCut | number:'1.2-2' }}</strong>
-        /
-        <strong>{{ calc.yearlyAgentCut | number:'1.2-2' }}</strong>
+        <span>Agent Cut:</span>
+        <span>
+            <strong>{{ calc.monthlyAgentCut | number:'1.2-2' }}</strong>
+            /
+            <strong>{{ calc.yearlyAgentCut | number:'1.2-2' }}</strong>
+        </span>
     </li>
-    <li>Break Even: <strong>{{ calc.agentBreakEven | number:'1.2-2' }}</strong></li>
-    <li>Break Even w/o Agent: <strong>{{ calc.breakEven | number:'1.2-2' }}</strong></li>
-    <li>Monthly Profit: <strong>{{ calc.agentMonthlyProfit | number:'1.2-2' }}</strong></li>
-    <li>Monthly Profit w/o Agent: <strong>{{ calc.monthlyProfit | number:'1.2-2' }}</strong></li>
-    <li>Yearly Profit: <strong>{{ calc.agentYearlyProfit | number:'1.2-2' }}</strong></li>
-    <li>Yearly Profit w/o Agent: <strong>{{ calc.yearlyProfit | number:'1.2-2' }}</strong></li>
+    <li>
+        <span>Break Even:</span>
+        <strong>{{ calc.agentBreakEven | number:'1.2-2' }}</strong>
+    </li>
+    <li>
+        <span>Break Even w/o Agent:</span>
+        <strong>{{ calc.breakEven | number:'1.2-2' }}</strong>
+    </li>
+    <li>
+        <span>Monthly Profit:</span>
+        <strong>{{ calc.agentMonthlyProfit | number:'1.2-2' }}</strong>
+    </li>
+    <li>
+        <span>Monthly Profit w/o Agent:</span>
+        <strong>{{ calc.monthlyProfit | number:'1.2-2' }}</strong>
+    </li>
+    <li>
+        <span>Yearly Profit:</span>
+        <strong>{{ calc.agentYearlyProfit | number:'1.2-2' }}</strong>
+    </li>
+    <li>
+        <span>Yearly Profit w/o Agent:</span>
+        <strong>{{ calc.yearlyProfit | number:'1.2-2' }}</strong>
+    </li>
 </ul>
-<hr>
-<ul>
-    <li>Monthly Profit: <strong>{{ calc.totalMonthlyProfit | number:'1.2-2' }}</strong></li>
-    <li>Monthly Profit w/ Depreciation: <strong>{{ calc.deprecationTotalMonthlyProfit | number:'1.2-2' }}</strong></li>
+<div>&nbsp;</div>
+<ul class="summary">
+    <li>
+        <span>Monthly Profit:</span>
+        <strong>{{ calc.totalMonthlyProfit | number:'1.2-2' }}</strong>
+    </li>
+    <li>
+        <span>Monthly Profit w/ Depreciation:</span>
+        <strong>{{ calc.deprecationTotalMonthlyProfit | number:'1.2-2' }}</strong>
+    </li>
 </ul>

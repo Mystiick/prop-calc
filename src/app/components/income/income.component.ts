@@ -2,7 +2,7 @@ import {
     Component,
     Input
 } from '@angular/core';
-import {Calculated} from '../../models/calculated.model';
+import {Calculated} from '../../models';
 import {DecimalPipe} from '@angular/common';
 
 @Component({
@@ -12,6 +12,7 @@ import {DecimalPipe} from '@angular/common';
         DecimalPipe
     ],
     templateUrl: './income.component.html',
+    styleUrls: ['../summary.scss']
 })
 export class IncomeComponent {
     @Input({required: true}) calc!: Calculated;

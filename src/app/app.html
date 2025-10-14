@@ -13,8 +13,22 @@
                          (changed)="recalculate()"/>
     </section>
     <section>
-        <app-mortgage [calc]="calculated"></app-mortgage>
-        <app-monthly [calc]="calculated" [property]="property"></app-monthly>
-        <app-income [calc]="calculated"></app-income>
+        <app-expense-form [expenses]="property.expenses"
+                          [calc]="calculated"
+                          (changed)="recalculate()"/>
+    </section>
+    <section>
+        <div>
+            <app-mortgage [calc]="calculated"></app-mortgage>
+        </div>
+        <div class="pad-top">
+            <app-monthly [calc]="calculated" [property]="property"></app-monthly>
+        </div>
+        <div class="pad-top">
+            <app-income [calc]="calculated"></app-income>
+        </div>
     </section>
 </div>
+<footer>
+    {{ environment.version }} - {{ environment.sha }}
+</footer>

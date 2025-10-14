@@ -1,5 +1,8 @@
-import {Income} from './income.model';
-import {Loan} from './loan.model';
+import {
+    Expense,
+    Income,
+    Loan
+} from './index';
 
 export type Property = {
     name: string;
@@ -7,4 +10,5 @@ export type Property = {
     notes: string;
     loan: Loan;
     income: Income;
+    expenses: Expense[];
 }

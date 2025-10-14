@@ -3,14 +3,18 @@
     <button (click)="addIncome()">Add</button>
 </h2>
 
-<form (change)="changed.emit()">
+<form (change)="changed.emit()" (keydown.enter)="$event.preventDefault()">
     <ul>
         @for (item of income.rentals; track $index) {
             <li>
                 <input type="number"
                        [name]="'rental'+$index"
+                       (keydown.enter)="$event.preventDefault()"
                        [(ngModel)]="income.rentals[$index]"/>
-                <button (click)="removeIncome($index)" tabindex="-1">Delete</button>
+
+                <button (click)="removeIncome($index)" tabindex="-1">
+                    Delete
+                </button>
             </li>
         }
     </ul>
