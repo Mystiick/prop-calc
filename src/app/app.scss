@@ -1,7 +1,7 @@
 @use '../styles/index' as *;
 
 .sheet {
-    margin: 2rem auto;
+    margin: 0 auto;
     font-family: system-ui, sans-serif;
     max-width: 800px;
 }
@@ -10,10 +10,20 @@ section {
     border-radius: 1rem;
     border: 2px solid $light-accent;
     padding: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 1rem;
     background-color: $light-shades;
+}
+
+section .pad-top {
+    padding-top: 2rem;
 }
 
 .results div {
     margin: 0.25rem 0;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.7rem;
+    cursor: default;
 }

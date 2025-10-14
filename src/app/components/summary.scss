@@ -1,0 +1,24 @@
+@use '../../styles/colors' as *;
+
+.summary {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 25rem;
+}
+
+.summary li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid $dark-accent
+}
+
+.summary li span:first-of-type {
+  text-align: left;
+}
+
+.summary li span:nth-of-type(2) {
+  text-align: right;
+  white-space: nowrap;
+}

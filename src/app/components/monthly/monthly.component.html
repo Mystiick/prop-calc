@@ -1,11 +1,39 @@
 <h3>Monthly</h3>
-<ul>
-    <li>Mortgage: <strong>{{ calc.monthlyMort | number:'1.2-2' }}</strong></li>
-    <li>Extra Payments: <strong>{{ property.loan.extraPayments | number:'1.2-2' }}</strong></li>
-    <li>Taxes: <strong>{{ calc.monthlyTaxes | number:'1.2-2' }}</strong></li>
-    <li>HOI: <strong>{{ calc.monthlyHoi | number:'1.2-2' }}</strong></li>
-    <li>Income: <strong>{{ calc.totalIncome | number:'1.2-2' }}</strong></li>
-    <li>Repairs: <strong>{{ calc.repairs | number:'1.2-2' }}</strong></li>
-    <li>Total Monthly Payments: <strong>{{ calc.monthlyPayments | number:'1.2-2' }}</strong></li>
-    <li>Cost of LOC Added: <strong>{{ calc.monthlyLocAdded | number:'1.2-2' }}</strong></li>
+<ul class="summary">
+    <li>
+        <span>Mortgage:</span>
+        <strong>{{ calc.monthlyMort | number:'1.2-2' }}</strong>
+    </li>
+    <li>
+        <span>Extra Payments:</span>
+        <strong>{{ property.loan.extraPayments | number:'1.2-2' }}</strong>
+    </li>
+    <li>
+        <span>Taxes:</span>
+        <strong>{{ calc.monthlyTaxes | number:'1.2-2' }}</strong>
+    </li>
+    <li>
+        <span>HOI:</span>
+        <strong>{{ calc.monthlyHoi | number:'1.2-2' }}</strong>
+    </li>
+    <li>
+        <span>Income:</span>
+        <strong>{{ calc.totalIncome | number:'1.2-2' }}</strong>
+    </li>
+    <li>
+        <span>Repairs:</span>
+        <strong>{{ calc.repairs | number:'1.2-2' }}</strong>
+    </li>
+    <li>
+        <span>Expenses:</span>
+        <strong>{{ calc.expenses | number:'1.2-2' }}</strong>
+    </li>
+    <li>
+        <span>Total Monthly Payments:</span>
+        <strong>{{ calc.monthlyPayments | number:'1.2-2' }}</strong>
+    </li>
+    <li>
+        <span>Cost of LOC Added:</span>
+        <strong>{{ calc.monthlyLocAdded | number:'1.2-2' }}</strong>
+    </li>
 </ul>

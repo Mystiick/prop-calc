@@ -1,7 +1,11 @@
-import {Component} from '@angular/core';
-import {CalculatorService} from './core/calculator.service';
+import {
+    Component,
+    Inject
+} from '@angular/core';
+import {CalculatorService} from './services/calculator.service';
 import {
     Calculated,
+    Expense,
     Income,
     Loan,
     Property
@@ -13,6 +17,9 @@ import {LoanFormComponent} from './components/forms/loan-form/loan-form.componen
 import {FormsModule} from '@angular/forms';
 import {PropertyFormComponent} from './components/forms/property-form/property-form.component';
 import {IncomeFormComponent} from './components/forms/income-form/income-form.component';
+import {ExpenseFormComponent} from './components/forms/expense-form/expense-form.component';
+import {DecimalCalculatorService} from './services/decimal-calculator.service';
+import {environment} from '../environment'
 
 @Component({
     selector: 'app-root',
@@ -24,14 +31,15 @@ import {IncomeFormComponent} from './components/forms/income-form/income-form.co
         IncomeComponent,
         IncomeFormComponent,
         LoanFormComponent,
-        PropertyFormComponent
+        PropertyFormComponent,
+        ExpenseFormComponent
     ],
     templateUrl: './app.html',
     styleUrls: ['./app.scss'],
-    providers: [CalculatorService]
+    providers: [CalculatorService, DecimalCalculatorService]
 })
 export class App {
-
+    protected readonly environment = environment;
     protected property: Property = {
         name: '',
         paidOff: false,
@@ -50,11 +58,15 @@ export class App {
             agentCutPct: 10,
             lineOfCredit: 7.2,
             repairPct: 5
-        } as Income
+        } as Income,
+        expenses: [{name: 'Insurance', value: 133.33} as Expense]
     } as Property;
     protected calculated: Calculated;
 
-    constructor(private calcService: CalculatorService) {
+    constructor(
+        @Inject(DecimalCalculatorService) private calcService: DecimalCalculatorService,
+        //@Inject(CalculatorService) private oldService: CalculatorService
+    ) {
         this.calculated = this.calcService.calculate(this.property);
     }
 
