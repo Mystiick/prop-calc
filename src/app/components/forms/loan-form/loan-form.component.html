@@ -1,3 +1,5 @@
+<h2>Expenses</h2>
+
 <form (change)="changed.emit()">
     <label>
         List Price
@@ -10,17 +12,24 @@
     </label>
 
     <label>
-        Down %
+        Down Payment (%)
         <input type="number" [(ngModel)]="loan.downPct" name="downPct"/>
     </label>
 
+    <label>Financing
+        <input type="text"
+               [value]="calc.principal"
+               readonly="readonly"
+        />
+    </label>
+
     <label>
-        Extra Down
+        Extra Down Payment
         <input type="number" [(ngModel)]="loan.extraDown" name="extraDown"/>
     </label>
 
     <label>
-        Interest Rate
+        Interest Rate (%)
         <input type="number" [(ngModel)]="loan.interestRate" name="interestRate"/>
     </label>
 

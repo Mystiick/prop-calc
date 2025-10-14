@@ -9,11 +9,17 @@ form input[type=checkbox] {
 }
 
 form input {
+  margin-top: 0.5rem;
   margin-left: 5%;
   width: 90%;
 }
 
 form textarea {
+  margin-top: 0.5rem;
   margin-left: 5%;
   width: 90%;
+}
+
+input[readonly] {
+  background-color: #45454545;
 }

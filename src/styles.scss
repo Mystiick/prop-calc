@@ -1,6 +1,34 @@
-@import 'colors';
+@use 'styles/index' as *;
 
 html, body {
-    background-color: $dark-shade;
-    color: $font-color;
+  background-color: $dark-shade;
+  color: $font-color;
+}
+
+h2.align-right {
+  position: relative;
+}
+
+h2.align-right button {
+  position: absolute;
+  right: 0;
+}
+
+hr {
+  color: $dark-shade;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0
+}
+
+button {
+  background: $light-accent;
+  color: $light-shades;
+  border: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
 }

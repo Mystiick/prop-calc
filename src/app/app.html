@@ -1,132 +1,20 @@
 <div class="sheet">
-    <section class="inputs">
-        <label>Address</label>
-        <input type="text"
-               [(ngModel)]="property.name"/>
-
-        <label>Notes</label>
-        <textarea [(ngModel)]="property.notes"></textarea>
-
-        <label><input id="paidOff" type="checkbox" [checked]="property.paidOff"/> Paid Off </label>
+    <section>
+        <app-property-form [property]="property"/>
     </section>
-    <section class="inputs">
-        <h2>Expenses</h2>
-        <label>List Price</label>
-        <input type="number" [(ngModel)]="property.loan.listPrice"/>
-
-        <label>Offer Price</label>
-        <input type="number"
-               [(ngModel)]="property.loan.offerPrice"
-               (change)="recalculateFields()"/>
-
-        <label>Down Payment (%)</label>
-        <input type="number"
-               [(ngModel)]="property.loan.downPct"
-               (change)="recalculateFields()"/>
-
-        <label>Financing</label>
-        <input readonly="readonly"
-               [value]="calculated.principal"/>
-
-        <label>Extra Down Payment</label>
-        <input type="number"
-               [(ngModel)]="property.loan.extraDown"
-               (change)="recalculateFields()"/>
-
-        <label>Interest Rate (%)</label>
-        <input type="number" step="0.1"
-               [(ngModel)]="property.loan.interestRate"
-               (change)="recalculateFields()"/>
-
-        <label>Months</label>
-        <input type="number"
-               [(ngModel)]="property.loan.months"
-               (change)="recalculateFields()"/>
-
-        <label>Extra Payments</label>
-        <input type="number"
-               [(ngModel)]="property.loan.extraPayments"
-               (change)="recalculateFields()"/>
-
-        <label>Yearly Taxes</label>
-        <input type="number"
-               [(ngModel)]="property.loan.yearlyTaxes"
-               (change)="recalculateFields()"/>
+    <section>
+        <app-loan-form [loan]="property.loan"
+                       [calc]="calculated"
+                       (changed)="recalculate()"/>
     </section>
-
-    <section class="inputs-income inputs">
-        <h2 class="align-right">
-            Monthly Income
-            <button (click)="addIncome()">Add</button>
-        </h2>
-        <hr/>
-        <ul>
-            @for (item of property.income.rentals; track $index) {
-                <li>
-                    <input type="number"
-                           (change)="recalculateFields()"
-                           [(ngModel)]="property.income.rentals[$index]"/>
-                    <button (click)="removeIncome($index)" tabindex="-1">Delete</button>
-                </li>
-            }
-        </ul>
-        <input readonly="readonly"
-               [value]="calculated.totalIncome"/>
-        <hr/>
-        <label>Agent Cut (%)</label>
-        <input type="number"
-               [(ngModel)]="property.income.agentCutPct"
-               (change)="recalculateFields()"/>
-        <label>Line of Credit (%)</label>
-        <input type="number"
-               [(ngModel)]="property.income.lineOfCredit"
-               (change)="recalculateFields()"/>
-        <label>Monthly Repair (%)</label>
-        <input type="number"
-               [(ngModel)]="property.income.repairPct"
-               (change)="recalculateFields()"/>
+    <section>
+        <app-income-form [income]="property.income"
+                         [calc]="calculated"
+                         (changed)="recalculate()"/>
     </section>
-
-    <section class="results">
-        <h4>Mortgage</h4>
-        <div>Down Payment: <strong>{{ calculated.downPayment | number:'1.2-2' }}</strong></div>
-        <div>Principal: <strong>{{ calculated.principal | number:'1.2-2' }}</strong></div>
-        <div>Interest: <strong>{{ calculated.interest | number:'1.2-2' }}</strong></div>
-        <div>Cost of Loan: <strong>{{ calculated.totalCostOfLoan | number:'1.2-2' }}</strong></div>
-
-        <hr/>
-        <h4>Monthly</h4>
-        <div>Mortgage: <strong>{{ calculated.monthlyMort | number:'1.2-2' }}</strong></div>
-        <div>Extra Payments: <strong>{{ property.loan.extraPayments | number:'1.2-2' }}</strong></div>
-        <div>Taxes: <strong>{{ calculated.monthlyTaxes | number:'1.2-2' }}</strong></div>
-        <div>HOI: <strong>{{ calculated.monthlyHoi | number:'1.2-2' }}</strong></div>
-        <div>Income: <strong>{{ calculated.totalIncome | number:'1.2-2' }}</strong></div>
-        <div>Repairs: <strong>{{ calculated.repairs | number:'1.2-2' }}</strong></div>
-        <div>Total Monthly Payments: <strong>{{ calculated.monthlyPayments | number:'1.2-2' }}</strong></div>
-        <div>&nbsp;</div>
-        <div>Cost of LOC Added: <strong>{{ calculated.monthlyLocAdded | number:'1.2-2' }}</strong></div>
-
-        <hr/>
-        <h4>Income</h4>
-        <div>
-            Agent Cut:
-            <strong>{{ calculated.monthlyAgentCut | number:'1.2-2' }}</strong>
-            /
-            <strong>{{ calculated.yearlyAgentCut | number:'1.2-2' }}</strong>
-        </div>
-
-        <div>Break Even: <strong>{{ calculated.agentBreakEven  | number:'1.2-2' }}</strong></div>
-        <div>Break Even w/o Agent: <strong>{{ calculated.breakEven  | number:'1.2-2' }}</strong></div>
-        <div>&nbsp;</div>
-        <div>Monthly Profit: <strong>{{ calculated.agentMonthlyProfit | number:'1.2-2' }}</strong></div>
-        <div>Monthly Profit w/o Agent: <strong>{{ calculated.monthlyProfit | number:'1.2-2' }}</strong></div>
-        <div>&nbsp;</div>
-        <div>Yearly Profit: <strong>{{ calculated.agentYearlyProfit | number:'1.2-2' }}</strong></div>
-        <div>Yearly Profit w/o Agent: <strong>{{ calculated.yearlyProfit | number:'1.2-2' }}</strong></div>
-
-        <hr/>
-        <div>Monthly Profit: <strong>{{ calculated.totalMonthlyProfit | number:'1.2-2' }}</strong></div>
-        <div>Monthly Profit w/ Depreciation :
-            <strong>{{ calculated.deprecationTotalMonthlyProfit | number:'1.2-2' }}</strong></div>
+    <section>
+        <app-mortgage [calc]="calculated"></app-mortgage>
+        <app-monthly [calc]="calculated" [property]="property"></app-monthly>
+        <app-income [calc]="calculated"></app-income>
     </section>
 </div>
