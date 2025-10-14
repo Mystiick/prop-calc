@@ -17,8 +17,8 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: |
-          sed -i "s/version: '.*'/version: '1.${{ github.run_number }}.${{ github.run_attempt }}'/" src/environments/environment.ts
-          sed -i "s/sha: '.*'/sha: '${{ github.sha }}'/" src/environments/environment.ts
+          sed -i "s/version: '.*'/version: '1.${{ github.run_number }}.${{ github.run_attempt }}'/" src/environment.ts
+          sed -i "s/sha: '.*'/sha: '${{ github.sha }}'/" src/environment.ts
       - run: npm run build -- --configuration production --base-href "/${{ github.event.repository.name }}/"
       - uses: peaceiris/actions-gh-pages@v3
         with:
