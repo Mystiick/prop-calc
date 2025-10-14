@@ -1,24 +1,39 @@
 import {Component} from '@angular/core';
-import {FormsModule} from "@angular/forms";
-import {DecimalPipe} from "@angular/common";
-import {Income, Loan, Property} from "./property.model";
-import {Calculated} from "./calculated.model";
+import {CalculatorService} from './core/calculator.service';
+import {
+    Calculated,
+    Income,
+    Loan,
+    Property
+} from './models';
+import {MortgageComponent} from './components/mortgage/mortgage.component';
+import {MonthlyComponent} from './components/monthly/monthly.component';
+import {IncomeComponent} from './components/income/income.component';
+import {LoanFormComponent} from './components/forms/loan-form/loan-form.component';
+import {FormsModule} from '@angular/forms';
+import {PropertyFormComponent} from './components/forms/property-form/property-form.component';
+import {IncomeFormComponent} from './components/forms/income-form/income-form.component';
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    templateUrl: './app.html',
     imports: [
         FormsModule,
-        DecimalPipe
+        MortgageComponent,
+        MonthlyComponent,
+        IncomeComponent,
+        IncomeFormComponent,
+        LoanFormComponent,
+        PropertyFormComponent
     ],
-    styleUrls: ['./app.scss']
+    templateUrl: './app.html',
+    styleUrls: ['./app.scss'],
+    providers: [CalculatorService]
 })
 export class App {
-    protected calculated = {} as Calculated;
 
     protected property: Property = {
-        name: "",
+        name: '',
         paidOff: false,
         loan: {
             listPrice: 90000,
@@ -37,23 +52,13 @@ export class App {
             repairPct: 5
         } as Income
     } as Property;
+    protected calculated: Calculated;
 
-    constructor() {
-        this.calculated = new Calculated(this.property);
-        this.recalculateFields();
+    constructor(private calcService: CalculatorService) {
+        this.calculated = this.calcService.calculate(this.property);
     }
 
-    public recalculateFields(): void {
-        this.calculated = new Calculated(this.property);
-    }
-
-    public addIncome(): void {
-        this.property.income.rentals.push(0);
-        this.recalculateFields();
-    }
-
-    public removeIncome(index: number): void {
-        this.property.income.rentals.splice(index, 1);
-        this.recalculateFields();
+    recalculate(): void {
+        this.calculated = this.calcService.calculate(this.property);
     }
 }

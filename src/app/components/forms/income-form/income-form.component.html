@@ -1,0 +1,38 @@
+<h2 class="align-right">
+    Monthly Income
+    <button (click)="addIncome()">Add</button>
+</h2>
+
+<form (change)="changed.emit()">
+    <ul>
+        @for (item of income.rentals; track $index) {
+            <li>
+                <input type="number"
+                       [name]="'rental'+$index"
+                       [(ngModel)]="income.rentals[$index]"/>
+                <button (click)="removeIncome($index)" tabindex="-1">Delete</button>
+            </li>
+        }
+    </ul>
+    <input readonly="readonly"
+           [value]="calc.totalIncome"
+           name="totalIncome"/>
+    <hr/>
+    <label>
+        Agent Cut (%)
+        <input type="number"
+               [(ngModel)]="income.agentCutPct"
+               name="agentCutPct"/></label>
+    <label>
+        Line of Credit (%)
+        <input type="number"
+               [(ngModel)]="income.lineOfCredit"
+               name="lineOfCredit"/>
+    </label>
+    <label>
+        Monthly Repair (%)
+        <input type="number"
+               [(ngModel)]="income.repairPct"
+               name="repairPct"/>
+    </label>
+</form>

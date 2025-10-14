@@ -1,0 +1,19 @@
+<form (change)="changed.emit()">
+    <label>
+        Address
+        <input type="text" [(ngModel)]="property.name" name="name"/>
+    </label>
+
+    <label>
+        Notes
+        <textarea type="number" [(ngModel)]="property.notes" name="notes"></textarea>
+    </label>
+
+    <label>
+        <input type="checkbox"
+               [(ngModel)]="property.paidOff"
+               [checked]="property.paidOff"
+               name="paidOff"/>
+        Paid Off
+    </label>
+</form>
