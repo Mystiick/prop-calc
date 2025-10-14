@@ -1,4 +1,4 @@
-import {Property} from "./property.model";
+import {Property} from "../property.model";
 
 export class Calculated {
     public downPayment: number = 0;
