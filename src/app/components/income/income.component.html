@@ -43,4 +43,12 @@
         <span>Monthly Profit w/ Depreciation:</span>
         <strong>{{ calc.deprecationTotalMonthlyProfit | number:'1.2-2' }}</strong>
     </li>
+    <li>
+        <span>Cap Rate:</span>
+        <strong>{{ calc.capRate | number:'1.2-2' }}%</strong>
+    </li>
+    <li>
+        <span>Cash-on-Cash Return:</span>
+        <strong>{{ calc.cashOnCashReturn  | number:'1.2-2' }}%</strong>
+    </li>
 </ul>
