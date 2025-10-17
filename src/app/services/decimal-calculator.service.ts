@@ -72,6 +72,10 @@ export class DecimalCalculatorService {
                 .plus(calc.totalMonthlyProfit)
                 .toNumber();
 
+        const pretaxProfit = new Decimal(calc.yearlyProfit).minus(loan.yearlyTaxes);
+        calc.capRate = pretaxProfit.dividedBy(loan.offerPrice).times(100).toNumber();
+        calc.cashOnCashReturn =  pretaxProfit.dividedBy(calc.downPayment).times(100).toNumber();
+
         return calc;
     }
 

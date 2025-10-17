@@ -22,4 +22,6 @@ export type Calculated = {
     monthlyLocAdded: number;
     totalMonthlyProfit: number;
     deprecationTotalMonthlyProfit: number;
+    capRate: number;
+    cashOnCashReturn: number;
 }

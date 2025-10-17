@@ -44,17 +44,17 @@ export class App {
         name: '',
         paidOff: false,
         loan: {
-            listPrice: 90000,
-            offerPrice: 100000,
+            listPrice: 90_000,
+            offerPrice: 100_000,
             downPct: 25,
-            extraDown: 5000,
+            extraDown: 5_000,
             interestRate: 7.5,
             months: 180,
             extraPayments: 100,
-            yearlyTaxes: 2000,
+            yearlyTaxes: 2_000,
         } as Loan,
         income: {
-            rentals: [1000, 2000] as number[],
+            rentals: [1_000, 2_000] as number[],
             agentCutPct: 10,
             lineOfCredit: 7.2,
             repairPct: 5
