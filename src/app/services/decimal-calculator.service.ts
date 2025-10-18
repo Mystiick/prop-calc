@@ -25,7 +25,7 @@ export class DecimalCalculatorService {
         calc.monthlyHoi = new Decimal(calc.yearlyHoi).dividedBy(12).toNumber();
 
         calc.monthlyMort = this.calculateMonthlyMort(loan, calc.principal);
-        calc.interest = new Decimal(calc.monthlyMort).times(loan.months).minus(calc.principal).toNumber();
+        calc.interest = new Decimal(calc.monthlyMort).times(new Decimal(loan.years).times(12)).minus(calc.principal).toNumber();
         calc.totalCostOfLoan = new Decimal(calc.principal).plus(calc.interest).toNumber();
 
         calc.monthlyAgentCut = new Decimal(calc.totalIncome).times(income.agentCutPct).dividedBy(100).toNumber();
@@ -83,15 +83,15 @@ export class DecimalCalculatorService {
         const rate = new Decimal(loan.interestRate).dividedBy(12).dividedBy(100).toNumber();
 
         if (rate === 0)
-            return new Decimal(principal).dividedBy(loan.months).toNumber();
+            return new Decimal(principal).dividedBy(new Decimal(loan.years).times(12)).toNumber();
 
         return new Decimal(principal)
             .times(rate)
             .times(
-                new Decimal(1).plus(rate).pow(loan.months)
+                new Decimal(1).plus(rate).pow(new Decimal(loan.years).times(12))
             )
             .dividedBy(
-                new Decimal(1).plus(rate).pow(loan.months).minus(1)
+                new Decimal(1).plus(rate).pow(new Decimal(loan.years).times(12)).minus(1)
             ).toNumber();
     }
 }

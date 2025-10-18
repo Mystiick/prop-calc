@@ -9,11 +9,12 @@ import {
     Calculated,
     Loan
 } from '../../../models';
+import {DecimalPipe} from '@angular/common';
 
 @Component({
     selector: 'app-loan-form',
     standalone: true,
-    imports: [FormsModule],
+    imports: [FormsModule, DecimalPipe],
     templateUrl: './loan-form.component.html',
     styleUrls: ['../form.scss']
 })

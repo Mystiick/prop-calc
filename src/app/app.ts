@@ -49,7 +49,7 @@ export class App {
             downPct: 25,
             extraDown: 5_000,
             interestRate: 7.5,
-            months: 180,
+            years: 25,
             extraPayments: 100,
             yearlyTaxes: 2_000,
         } as Loan,

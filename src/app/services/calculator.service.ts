@@ -4,6 +4,7 @@ import {
     Loan,
     Property
 } from '../models';
+import Decimal from 'decimal.js';
 
 @Injectable({providedIn: 'root'})
 export class CalculatorService {
@@ -24,7 +25,7 @@ export class CalculatorService {
         calc.monthlyHoi = calc.yearlyHoi / 12;
 
         calc.monthlyMort = this.calculateMonthlyMort(loan, calc.principal);
-        calc.interest = calc.monthlyMort * loan.months - calc.principal;
+        calc.interest = calc.monthlyMort * (loan.years * 12) - calc.principal;
         calc.totalCostOfLoan = calc.principal + calc.interest;
 
         calc.monthlyAgentCut = calc.totalIncome * income.agentCutPct / 100;
@@ -60,7 +61,7 @@ export class CalculatorService {
 
     private calculateMonthlyMort(loan: Loan, principal: number): number {
         const rate = loan.interestRate / 12 / 100;
-        const months = loan.months;
+        const months = new Decimal(loan.years).times(12).toNumber();
         const loanAmount = principal;
 
         if (rate === 0)
