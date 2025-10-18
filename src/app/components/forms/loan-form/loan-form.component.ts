@@ -22,9 +22,4 @@ export class LoanFormComponent {
     @Input({required: true}) loan!: Loan;
     @Input({required: true}) calc!: Calculated;
     @Output() changed = new EventEmitter<void>();
-
-    updateListPrice(value: string): void {
-        // Remove commas and convert to number
-        this.loan.listPrice = Number(value.replace(/,/g, ''));
-    }
 }
