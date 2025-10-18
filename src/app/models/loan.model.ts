@@ -4,7 +4,7 @@ export type Loan = {
     downPct: number;
     extraDown: number;
     interestRate: number;
-    months: number;
+    years: number;
     extraPayments: number;
     yearlyTaxes: number;
 }

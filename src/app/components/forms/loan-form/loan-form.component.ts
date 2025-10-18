@@ -9,11 +9,12 @@ import {
     Calculated,
     Loan
 } from '../../../models';
+import {DecimalPipe} from '@angular/common';
 
 @Component({
     selector: 'app-loan-form',
     standalone: true,
-    imports: [FormsModule],
+    imports: [FormsModule, DecimalPipe],
     templateUrl: './loan-form.component.html',
     styleUrls: ['../form.scss']
 })
@@ -21,4 +22,9 @@ export class LoanFormComponent {
     @Input({required: true}) loan!: Loan;
     @Input({required: true}) calc!: Calculated;
     @Output() changed = new EventEmitter<void>();
+
+    updateListPrice(value: string): void {
+        // Remove commas and convert to number
+        this.loan.listPrice = Number(value.replace(/,/g, ''));
+    }
 }

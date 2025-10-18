@@ -3,12 +3,15 @@
 <form (change)="changed.emit()">
     <label>
         List Price
-        <input type="number" [(ngModel)]="loan.listPrice" name="listPrice"/>
+        <input type="text"
+               [ngModel]="loan.listPrice | number:'1.0-0'"
+               (ngModelChange)="updateListPrice($event)"
+               name="listPrice"/>
     </label>
 
     <label>
         Offer Price
-        <input type="number" [(ngModel)]="loan.offerPrice" name="offerPrice"/>
+        <input type="number" [ngModel]="loan.offerPrice" name="offerPrice"/>
     </label>
 
     <label>
@@ -34,8 +37,8 @@
     </label>
 
     <label>
-        Months
-        <input type="number" [(ngModel)]="loan.months" name="months"/>
+        Years
+        <input type="number" [(ngModel)]="loan.years" name="months"/>
     </label>
 
     <label>
