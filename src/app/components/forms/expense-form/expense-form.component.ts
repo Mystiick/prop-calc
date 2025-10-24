@@ -9,11 +9,13 @@ import {
     Calculated,
     Expense
 } from '../../../models';
+import {CurrencyInputComponent} from '../../currency-input/currency-input.component';
+import {DecimalPipe} from '@angular/common';
 
 @Component({
     selector: 'app-expense-form',
     standalone: true,
-    imports: [FormsModule],
+    imports: [FormsModule, CurrencyInputComponent, DecimalPipe],
     templateUrl: './expense-form.component.html',
     styleUrls: ['../form.scss', './expense-form.component.scss']
 })

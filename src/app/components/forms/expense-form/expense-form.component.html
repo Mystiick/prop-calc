@@ -11,14 +11,14 @@
                        [name]="'expenseName'+$index"
                        [(ngModel)]="expenses[$index].name"/>
 
-                <input type="number"
-                       [name]="'expenseValue'+$index"
-                       [(ngModel)]="expenses[$index].value"/>
+                <app-currency-input [(ngModel)]="expenses[$index].value"
+                                    [name]="'expenseValue'+$index"
+                                    [isChild]="true"/>
                 <button (click)="removeExpense($index)" tabindex="-1">Delete</button>
             </li>
         }
     </ul>
     <input readonly="readonly"
-           [value]="calc.expenses"
+           [value]="calc.expenses | number:'1.0-2'"
            name="expenses"/>
 </form>

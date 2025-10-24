@@ -1,14 +1,14 @@
-<h2>Expenses</h2>
+<h2>Loan</h2>
 
 <form (change)="changed.emit()">
     <label>
         List Price
-        <input type="number" [(ngModel)]="loan.listPrice" name="listPrice"/>
+        <app-currency-input [ngModel]="loan.listPrice" name="listPrice"/>
     </label>
 
     <label>
         Offer Price
-        <input type="number" [(ngModel)]="loan.offerPrice" name="offerPrice"/>
+        <app-currency-input [(ngModel)]="loan.offerPrice" name="offerPrice"/>
     </label>
 
     <label>
@@ -18,14 +18,13 @@
 
     <label>Financing
         <input type="text"
-               [value]="calc.principal"
-               readonly="readonly"
-        />
+               [value]="calc.principal | number:'1.0-2'"
+               readonly="readonly"/>
     </label>
 
     <label>
         Extra Down Payment
-        <input type="number" [(ngModel)]="loan.extraDown" name="extraDown"/>
+        <app-currency-input [(ngModel)]="loan.extraDown" name="extraDown"/>
     </label>
 
     <label>
@@ -40,11 +39,11 @@
 
     <label>
         Extra Payments
-        <input type="number" [(ngModel)]="loan.extraPayments" name="extraPayments"/>
+        <app-currency-input [(ngModel)]="loan.extraPayments" name="extraPayments"/>
     </label>
 
     <label>
         Yearly Taxes
-        <input type="number" [(ngModel)]="loan.yearlyTaxes" name="yearlyTaxes"/>
+        <app-currency-input [(ngModel)]="loan.yearlyTaxes" name="yearlyTaxes"/>
     </label>
 </form>

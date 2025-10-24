@@ -7,10 +7,10 @@
     <ul>
         @for (item of income.rentals; track $index) {
             <li>
-                <input type="number"
-                       [name]="'rental'+$index"
-                       (keydown.enter)="$event.preventDefault()"
-                       [(ngModel)]="income.rentals[$index]"/>
+                <app-currency-input [name]="'rental'+$index"
+                                    [(ngModel)]="income.rentals[$index]"
+                                    (keydown.enter)="$event.preventDefault()"
+                                    [isChild]="true"/>
 
                 <button (click)="removeIncome($index)" tabindex="-1">
                     Delete
@@ -19,7 +19,7 @@
         }
     </ul>
     <input readonly="readonly"
-           [value]="calc.totalIncome"
+           [value]="calc.totalIncome | number:'1.0-2'"
            name="totalIncome"/>
     <hr/>
     <label>

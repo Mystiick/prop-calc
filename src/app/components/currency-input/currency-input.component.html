@@ -1,0 +1,6 @@
+<input type="text"
+       [value]="displayValue"
+       [class]="isChild ? 'child-currency-input' : 'currency-input'"
+       (input)="onInputChange($event)"
+       (blur)="onBlur()"
+       inputmode="numeric" />
